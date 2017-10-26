@@ -1,4 +1,4 @@
 class SiteController < ApplicationController
-  def randing
-  end
+    def randing
+    end
 end

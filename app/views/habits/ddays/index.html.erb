@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ddays</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Project</th>
+        <th>Day</th>
+        <th>Success</th>
+        <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @ddays.each do |dday| %>
+        <tr>
+            <td><%= dday.user %></td>
+            <td><%= dday.project %></td>
+            <td><%= dday.day %></td>
+            <td><%= dday.success %></td>
+            <td><%= link_to 'Show', dday %></td>
+            <td><%= link_to 'Edit', edit_project_dday_path(dday) %></td>
+            <td><%= link_to 'Destroy', dday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dday', new_project_dday_path %>

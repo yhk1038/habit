@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
     # App root
     root 'site#randing'
 
@@ -8,5 +7,11 @@ Rails.application.routes.draw do
         sessions: 'users/sessions'
     }
 
+    # Resources
+    scope module: 'habits' do
+        resources :projects, path: 'habits' do
+            resources :ddays
+        end
+    end
 
 end

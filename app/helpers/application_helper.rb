@@ -1,4 +1,11 @@
 module ApplicationHelper
+    def app
+        {
+            name: 'Habit',
+            description: '습관을 만드는 좋은 방법.'
+        }
+    end
+
     def bootstrap_class_for(flash_type)
         case flash_type
         when "success"
