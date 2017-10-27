@@ -1,0 +1,51 @@
+<aside id="sidebar" class="sidebar c-overflow bgm-2">
+    <div class="profile-menu">
+        <a href="#">
+            <div class="profile-pic">
+                <img src="/template/img/profile-pics/1.jpg" alt="My Profile image" class="m-t-20">
+            </div>
+
+            <div class="profile-info">
+                <%= current_user.email %>
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </a>
+
+        <ul class="main-menu">
+            <li>
+                <a href="profile-about.html"><i class="zmdi zmdi-account"></i> My Profile</a>
+            </li>
+            <li>
+                <a href=""><i class="zmdi zmdi-settings"></i> Account Settings</a>
+            </li>
+            <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="zmdi zmdi-time-restore"></i> Logout
+                <% end %>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="main-menu">
+        <li class="active">
+            <a href="index.html"><i class="glyphicon glyphicon-leaf"></i> My Habits</a>
+        </li>
+        <li>
+            <a href=""><i class="zmdi zmdi-view-compact"></i> Lounge</a>
+        </li>
+        <li>
+            <a href="typography.html"><i class="zmdi zmdi-calendar"></i> Calendar</a>
+        </li>
+        <li>
+            <a href="typography.html"><i class="glyphicon glyphicon-object-align-bottom"></i> Stats</a>
+        </li>
+        <!--<li class="sub-menu">-->
+            <!--<a href=""><i class="zmdi zmdi-widgets"></i> Widgets</a>-->
+
+            <!--<ul>-->
+                <!--<li><a href="widget-templates.html">Templates</a></li>-->
+                <!--<li><a href="widgets.html">Widgets</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+    </ul>
+</aside>

@@ -1,6 +1,6 @@
-<!-- Fixed navbar -->
-<div class="navbar navbar-default" role="navigation">
-    <div class="container">
+<!-- Site navbar -->
+<div id="site-nav" class="navbar navbar-default" role="navigation" style="display: none;">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -8,27 +8,224 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><%= app[:name] %></a>
+            <!--<a class="navbar-brand" href="#"><%= app[:name] %></a>-->
+            <%= link_to root_path, class: 'navbar-brand', id: 'site-logo' do %>
+                <img src="https://static.c9.io/nc-3.1.3886-131188e5-wf/static/plugins/c9.profile/static/images/cloud9-logo.svg" alt="Habit's logo" width="57">
+            <% end %>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Posts", "#" %></li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
+                <!--<li><%= link_to "Lounge", root_path %></li>-->
                 <% if user_signed_in? %>
+                    <li>
+                        <%= link_to projects_path do %>
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                        <% end %>
+                    </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img id="nav-profile-img" src="/imgs/avatar.png" alt="my profile image">
+                            <b class="caret"></b>
+                        </a>
                         <ul class="dropdown-menu">
                             <li><%= link_to "My Profile", edit_user_registration_path %></li>
                             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
                         </ul>
                     </li>
                 <% else %>
-                    <li><%= link_to "Sign in", new_user_session_path %></li>
-                    <li><%= link_to "Sign up", new_user_registration_path %></li>
+                    <li class="pre-login"><%= link_to "Sign in", new_user_session_path %></li>
+                    <li class="pre-login"><%= link_to "Sign up", new_user_registration_path %></li>
                 <% end %>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </div>
+
+
+<header id="header" class="clearfix bgm-3" data-current-skin="blue">
+    <ul class="header-inner">
+        <% if user_signed_in? %>
+            <li id="menu-trigger" data-trigger="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+        <% end %>
+
+        <li class="logo">
+            <%= link_to app[:name], root_path %>
+        </li>
+
+        <li class="pull-right">
+            <ul class="top-menu">
+                <!--<li id="toggle-width">-->
+                    <!--<div class="toggle-switch">-->
+                        <!--<input id="tw-switch" type="checkbox" hidden="hidden">-->
+                        <!--<label for="tw-switch" class="ts-helper"></label>-->
+                    <!--</div>-->
+                <!--</li>-->
+
+                <!--<li id="top-search">-->
+                    <!--<a href=""><i class="tm-icon zmdi zmdi-search"></i></a>-->
+                <!--</li>-->
+
+                <% if user_signed_in? %>
+                    <!-- Alarm for passed D-day -->
+                    <li id="nav-alarm" class="dropdown">
+                        <a data-toggle="dropdown" href="">
+                            <i class="tm-icon zmdi zmdi-notifications"></i>
+                            <i class="tmn-counts">9</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg pull-right">
+                            <div class="listview" id="notifications">
+                                <div class="lv-header">
+                                    Notification
+
+                                    <ul class="actions">
+                                        <li class="dropdown">
+                                            <a href="" data-clear="notification">
+                                                <i class="zmdi zmdi-check-all"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="lv-body">
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="/template/img/profile-pics/1.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">David Belle</div>
+                                                <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="/template/img/profile-pics/2.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Jonathan Morris</div>
+                                                <small class="lv-small">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="/template/img/profile-pics/3.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Fredric Mitchell Jr.</div>
+                                                <small class="lv-small">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="/template/img/profile-pics/4.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Glenn Jecobs</div>
+                                                <small class="lv-small">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="/template/img/profile-pics/4.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">Bill Phillips</div>
+                                                <small class="lv-small">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <a class="lv-footer" href="">View Previous</a>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!-- New Habit project -->
+                    <li id="nav-new_habit" class="hidden-xs">
+                        <%= link_to new_project_path do %>
+                            <i class="tm-icon zmdi zmdi-plus-circle"></i>
+                        <% end %>
+                    </li>
+                <% end %>
+
+                <!-- My habits -->
+                <li id="nav-my_habits" class="hidden-xs">
+                    <%= link_to projects_path do %>
+                        <i class="tm-icon glyphicon glyphicon-leaf"></i>
+                    <% end %>
+                </li>
+
+                <!-- User -->
+                <% if user_signed_in? %>
+                    <li id="nav-my_account" class="dropdown">
+                        <a data-toggle="dropdown" href="">
+                            <i class="tm-icon zmdi zmdi-account"></i>
+                        </a>
+                        <ul class="dropdown-menu dm-icon pull-right">
+                            <!--<li class="skin-switch hidden-xs">-->
+                                <!--<span class="ss-skin bgm-lightblue" data-skin="lightblue"></span>-->
+                                <!--<span class="ss-skin bgm-bluegray" data-skin="bluegray"></span>-->
+                                <!--<span class="ss-skin bgm-cyan" data-skin="cyan"></span>-->
+                                <!--<span class="ss-skin bgm-teal" data-skin="teal"></span>-->
+                                <!--<span class="ss-skin bgm-orange" data-skin="orange"></span>-->
+                                <!--<span class="ss-skin bgm-blue" data-skin="blue"></span>-->
+                            <!--</li>-->
+                            <!--<li class="divider hidden-xs"></li>-->
+                            <!--<li>-->
+                                <!--<a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a href=""><i class="zmdi zmdi-account"></i> My profile</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-settings"></i> Account Settings</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                <% else %>
+                    <li id="nav-sign_in" class="">
+                        <%= link_to new_user_session_path do %>
+                            <i class="tm-icon zmdi zmdi-sign-in"></i>
+                        <% end %>
+                    </li>
+                    <li id="nav-sign_up" class="">
+                        <%= link_to new_user_registration_path do %>
+                            <i class="tm-icon zmdi zmdi-account-add"></i>
+                        <% end %>
+                    </li>
+                <% end %>
+
+                <!--<li class="hidden-xs" id="chat-trigger" data-trigger="#chat">-->
+                    <!--<a href=""><i class="tm-icon zmdi zmdi-comment-alt-text"></i></a>-->
+                <!--</li>-->
+            </ul>
+        </li>
+    </ul>
+
+
+    <!-- Top Search Content -->
+    <!--<div id="top-search-wrap">-->
+        <!--<div class="tsw-inner">-->
+            <!--<i id="top-search-close" class="zmdi zmdi-arrow-left"></i>-->
+            <!--<input type="text">-->
+        <!--</div>-->
+    <!--</div>-->
+</header>

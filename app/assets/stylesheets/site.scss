@@ -1,3 +1,10 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "components/drawable/*";
+
+.bgm-1{ background: $bgcolor-1 !important }
+.bgm-i{ background-color: $bgcolor-i !important }
+.bgm-2{ background: $bgcolor-2 !important }
+.bgm-3{ background: $bgcolor-3 !important }
+.bgm-4{ background: $bgcolor-4 !important }

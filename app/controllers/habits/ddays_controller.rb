@@ -1,5 +1,6 @@
 class Habits::DdaysController < ApplicationController
     before_action :valid_session
+    # before_action :gatekeeper
     before_action :set_project
     before_action :set_dday, only: [:show, :edit, :update, :destroy]
 
@@ -76,6 +77,6 @@ class Habits::DdaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dday_params
-        params.require(:dday).permit(:user_id, :project_id, :day, :success)
+        params.require(:dday).permit(:project_id, :day, :success)
     end
 end
