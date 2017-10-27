@@ -7,3 +7,5 @@ tmp/*
 log
 log/*
 db/development.sqlite3
+.DS_Store
+*/.Ds_Store
