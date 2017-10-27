@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20171026154257) do
   create_table "ddays", force: :cascade do |t|
     t.integer "project_id"
     t.datetime "day"
-    t.boolean "success"
+    t.boolean "success", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_ddays_on_project_id"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20171026154257) do
     t.integer "user_id"
     t.string "title"
     t.text "description"
-    t.boolean "success"
+    t.boolean "success", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
