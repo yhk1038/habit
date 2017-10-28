@@ -3,4 +3,8 @@ class Dday < ApplicationRecord
 
     scope :done, -> { where(success: true) }
     scope :left, -> { where(success: false) }
+
+    def done
+        self.success
+    end
 end

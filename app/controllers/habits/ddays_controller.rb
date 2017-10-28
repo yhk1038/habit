@@ -1,5 +1,5 @@
 class Habits::DdaysController < ApplicationController
-    before_action :valid_session
+    before_action :login_first
     # before_action :gatekeeper
     before_action :set_project
     before_action :set_dday, only: [:show, :edit, :update, :destroy]
@@ -8,6 +8,9 @@ class Habits::DdaysController < ApplicationController
     # GET /habits/:project_id/ddays
     # GET /habits/:project_id/ddays.json
     def index
+        if params[:flash] == 'enter'
+            flash[:success] = '날짜들을 클릭해서 나의 습관 만들기를 기록하세요!'
+        end
         @ddays = @project.ddays
     end
 
@@ -47,7 +50,7 @@ class Habits::DdaysController < ApplicationController
         respond_to do |format|
             if @dday.update(dday_params)
                 format.html { redirect_to @dday, notice: 'Dday was successfully updated.' }
-                format.json { render :show, status: :ok, location: @dday }
+                format.json { render json: @dday, status: :ok }
             else
                 format.html { render :edit }
                 format.json { render json: @dday.errors, status: :unprocessable_entity }

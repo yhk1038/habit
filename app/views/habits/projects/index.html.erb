@@ -1,141 +1,30 @@
 
+<div class="block-header m-t-30 m-b-0">
+    <h2 class="list-heading">나의 습관 프로젝트</h2>
 
-        <div class="block-header m-t-30 m-b-0">
-            <h2 class="list-heading">나의 습관 프로젝트</h2>
+    <ul class="actions">
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-search"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-refresh-alt"></i>
+            </a>
+        </li>
+    </ul>
 
-            <ul class="actions">
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-trending-up"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="zmdi zmdi-check-all"></i>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="" data-toggle="dropdown">
-                        <i class="zmdi zmdi-more-vert"></i>
-                    </a>
+</div>
 
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="">Refresh</a>
-                        </li>
-                        <li>
-                            <a href="">Manage Widgets</a>
-                        </li>
-                        <li>
-                            <a href="">Widgets Settings</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+<div class="ground card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <!-- New habit project -->
+            <%= render partial: '/habits/projects/project_pannel', locals: {status: 'creater'} %>
 
+            <!-- List of my habit projects -->
+            <%= render partial: '/habits/projects/project_pannel', collection: @projects, as: :habit, locals: {status: 'general'} %>
         </div>
-
-        <div class="ground card">
-            <div class="card-body card-padding">
-                <div class="row">
-
-                    <!-- New habit project -->
-                    <div class="col-md-4 col-sm-6 resizable">
-                        <%= link_to new_project_path, class: 'habit-height habit-width' do%>
-                            <div class="habit creater card flex-center-center habit-height habit-width">
-                                <div class="card-header">
-                                    <h2>
-                                        <span class="zmdi zmdi-plus-circle spin"></span>
-                                        <small class="m-t-20 c-white f-16">새로운 습관을 만들어보세요!</small>
-                                    </h2>
-                                </div>
-                                <div class="card-body card-padding" style="padding: 0;"></div>
-                            </div>
-                        <% end %>
-                    </div>
-
-                    <!-- List of my habit projects -->
-                    <% @projects.each do |habit| %>
-                        <% progress = habit.progress %>
-                        <div class="col-md-4 col-sm-6 resizable">
-                            <%= link_to habit, class: 'habit-height habit-width' do %>
-                                <div class="habit card habit-height habit-width">
-                                    <div class="card-header">
-                                        <h2>
-                                            <%= habit.title %>
-                                            <small>since <%= habit.created_at.strftime('%F') %></small>
-                                        </h2>
-                                    </div>
-                                    <div class="content card-body card-padding">
-                                        <p class="fixed-height f-300"><%= habit.description %></p>
-                                        <p class="passed m-b-20 f-300"><%= 'Start at ' + habit.since_from_create.to_s + ' day before' %></p>
-                                        <p class="actionBtn m-b-0 f-300 text-right">
-                                            <button onclick="window.location='<%= edit_project_path(habit) %>'; event.stopPropagation(); return false;" class="btn btn-default bgm-bluegray">edit</button>
-                                            <button onclick="window.location='<%= project_ddays_path(habit) %>'; event.stopPropagation(); return false;" class="btn btn-default bgm-4">open</button>
-                                        </p>
-                                    </div>
-                                    <div class="footer card-body card-padding flex-center-justify">
-                                        <span>
-                                            <strong><%= progress[:rate] %></strong>
-                                            <span>달성</span>
-                                        </span>
-
-                                        <span>
-                                            <strong><%= progress[:done] %></strong>
-                                            <span>번 완료</span>
-                                        </span>
-
-                                        <span>
-                                            <strong><%= progress[:left] %></strong>
-                                            <span>일 남음</span>
-                                        </span>
-                                    </div>
-
-                                </div>
-                            <% end %>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-<!--<p id="notice"><%= notice %></p>-->
-
-<!--<h1>Projects</h1>-->
-
-<!--<table>-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th>User</th>-->
-<!--<th>Title</th>-->
-<!--<th>Description</th>-->
-<!--<th>Success</th>-->
-<!--<th colspan="3"></th>-->
-<!--</tr>-->
-<!--</thead>-->
-
-<!--<tbody>-->
-<!--<% @projects.each do |project| %>-->
-    <!--<tr>-->
-    <!--<td><%= project.user %></td>-->
-    <!--<td><%= project.title %></td>-->
-    <!--<td><%= project.description %></td>-->
-    <!--<td><%= project.success %></td>-->
-    <!--<td><%= link_to 'Show', project %></td>-->
-    <!--<td><%= link_to 'Edit', edit_project_path(project) %></td>-->
-    <!--<td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-    <!--</tr>-->
-    <!--<% end %>-->
-<!--</tbody>-->
-<!--</table>-->
-
-<!--<br>-->
-
-<!--<%= link_to 'New Project', new_project_path %>-->
+    </div>
+</div>

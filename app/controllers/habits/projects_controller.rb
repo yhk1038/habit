@@ -1,5 +1,5 @@
 class Habits::ProjectsController < ApplicationController
-    before_action :valid_session
+    before_action :login_first
     # before_action :gatekeeper
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 

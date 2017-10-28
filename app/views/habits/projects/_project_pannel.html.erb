@@ -1,0 +1,56 @@
+<% case status %>
+<% when 'creater' %>
+    <div class="col-md-4 col-sm-6 resizable">
+        <%= link_to new_project_path, class: 'habit-height habit-width' do%>
+            <div class="habit creater card flex-center-center habit-height habit-width">
+                <div class="card-header">
+                    <h2>
+                        <span class="zmdi zmdi-plus-circle spin"></span>
+                        <small class="m-t-20 c-white f-16">새로운 습관을 만들어보세요!</small>
+                    </h2>
+                </div>
+                <div class="card-body card-padding" style="padding: 0;"></div>
+            </div>
+        <% end %>
+    </div>
+
+<% when 'general' %>
+    <% progress = habit.progress %>
+    <div class="col-md-4 col-sm-6 resizable">
+        <%= link_to habit, class: 'habit-height habit-width' do %>
+            <div class="habit card habit-height habit-width">
+                <div class="card-header">
+                    <h2>
+                        <%= habit.title %>
+                        <small>since <%= habit.created_at.strftime('%F') %></small>
+                    </h2>
+                </div>
+                <div class="content card-body card-padding">
+                    <p class="fixed-height f-300"><%= habit.description %></p>
+                    <p class="passed m-b-20 f-300"><%= 'Start at ' + habit.since_from_create.to_s + ' day before' %></p>
+                    <p class="actionBtn m-b-0 f-300 text-right">
+                        <button onclick="window.location='<%= edit_project_path(habit) %>'; event.stopPropagation(); return false;" class="btn btn-default bgm-bluegray">edit</button>
+                        <button onclick="window.location='<%= project_ddays_path(habit) %>'; event.stopPropagation(); return false;" class="btn btn-default bgm-4">open</button>
+                    </p>
+                </div>
+                <div class="footer card-body card-padding flex-center-justify">
+                    <span>
+                        <strong><%= progress[:rate] %></strong>
+                        <span>달성</span>
+                    </span>
+
+                    <span>
+                        <strong><%= progress[:done] %></strong>
+                        <span>번 완료</span>
+                    </span>
+
+                    <span>
+                        <strong><%= progress[:left] %></strong>
+                        <span>일 남음</span>
+                    </span>
+                </div>
+
+            </div>
+        <% end %>
+    </div>
+<% end %>

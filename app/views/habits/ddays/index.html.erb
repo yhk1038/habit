@@ -1,31 +1,44 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Ddays</h1>
+<div class="block-header m-t-30 m-b-0">
+    <h2 class="list-heading">
+        <%= @project.title %>
+        <small><%= @project.description %></small>
+    </h2>
 
-<table>
-    <thead>
-    <tr>
-        <th>Project</th>
-        <th>Day</th>
-        <th>Success</th>
-        <th colspan="3"></th>
-    </tr>
-    </thead>
+    <ul class="actions">
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-notifications"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-refresh-alt"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-settings"></i>
+            </a>
+        </li>
+    </ul>
 
-    <tbody>
-    <% @ddays.each do |dday| %>
-        <tr>
-            <td><%= @project %></td>
-            <td><%= dday.day %></td>
-            <td><%= dday.success %></td>
-            <td><%= link_to 'Show', project_dday_path(@project, dday) %></td>
-            <td><%= link_to 'Edit', edit_project_dday_path(@project, dday) %></td>
-            <td><%= link_to 'Destroy', project_dday_path(@project, dday), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-    </tbody>
-</table>
+</div>
 
-<br>
+<div class="ground card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <!-- New habit project -->
+            <%#= render partial: '/habits/ddays/dday_pannel', locals: {status: 'creater'} %>
+            <% @count = @ddays.count; @all = @count %>
+            <% @ddays.to_a.each_slice(7).each do |chunked_ddays| %>
+            <div class="week-safe card clearfix m-b-15">
+                <div class="card-body">
+                    <%= render partial: '/habits/ddays/dday_pannel', collection: chunked_ddays, as: :dday, locals: {status: 'general'} %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
 
-<%= link_to 'New Dday', new_project_dday_path %>

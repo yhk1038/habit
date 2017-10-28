@@ -14,6 +14,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script type="text/javascript" charset="utf-8">
+        $tk = '<%= form_authenticity_token %>';
+    </script>
 
     <!-- Vendor CSS -->
     <link href="/template/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">

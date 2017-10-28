@@ -1,6 +1,14 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+protocol = 'http://'
+host = 'localhost:3000'
+
+$site =
+    protocol: protocol
+    host: host
+    domain: protocol + host
+
 
 # sm/md 구간에서 Sidebar 보이게.
 display_sidebar = (width) ->
