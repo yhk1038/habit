@@ -1,5 +1,34 @@
-<h1>New Project</h1>
 
-<%= render 'form', project: @project %>
+<div class="block-header m-t-30 m-b-0">
+    <h2 class="list-heading">어떤 습관을 만들고 싶으신가요?</h2>
 
-<%= link_to 'Back', projects_path %>
+    <ul class="actions">
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-search"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-refresh-alt"></i>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+<div class="ground card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <div class="card">
+                <div class="card-body card-padding">
+                    <%= render 'form', project: @project %>
+
+                    <%= link_to 'Back', projects_path %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

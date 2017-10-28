@@ -1,37 +1,43 @@
 <%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+    <% if project.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+            <ul>
+                <% project.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <%= form.hidden_field :user_id, id: :project_user_id, value: current_user.id %>
+
+    <div class="input-group fg-float row w-100">
+        <div class="col-sm-2">
+            <p class="c-black f-500 m-b-20">프로젝트 이름</p>
+        </div>
+        <div class="col-sm-10">
+            <div class="fg-line">
+                <%= form.text_field :title, id: :project_title, class: 'form-control' %>
+                <%= form.label :title, class: 'fg-label', value: '만들고 싶은 습관의 이름을 적어주세요@' %>
+            </div>
+        </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :project_user_id %>
-  </div>
+    <div class="form-group row w-100 m-t-20">
+        <div class="col-sm-2">
+            <p class="c-black f-500 m-b-20">
+                <%= form.label :description, class: 'fg-label' %>
+            </p>
+        </div>
+        <div class="col-sm-10">
+            <div class="fg-line">
+                <%= form.text_area :description, id: :project_description, class: 'form-control', rows: '5' %>
+            </div>
+        </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :project_title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :project_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :success %>
-    <%= form.check_box :success, id: :project_success %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
 <% end %>
