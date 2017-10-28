@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @dday.user %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @dday.project %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @dday.day %>
+</p>
+
+<p>
+  <strong>Success:</strong>
+  <%= @dday.success %>
+</p>
+
+<%= link_to 'Edit', edit_dday_path(@dday) %> |
+<%= link_to 'Back', ddays_path %>

@@ -1,0 +1,30 @@
+
+<div class="block-header m-t-30 m-b-0">
+    <h2 class="list-heading">나의 습관 프로젝트</h2>
+
+    <ul class="actions">
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-search"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-refresh-alt"></i>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<div class="ground card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <!-- New habit project -->
+            <%= render partial: '/habits/projects/project_pannel', locals: {status: 'creater'} %>
+
+            <!-- List of my habit projects -->
+            <%= render partial: '/habits/projects/project_pannel', collection: @projects, as: :habit, locals: {status: 'general'} %>
+        </div>
+    </div>
+</div>

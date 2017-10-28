@@ -1,0 +1,123 @@
+// Place all the styles related to the ddays controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "components/drawable/*";
+
+.week-safe.card{
+    background: transparent;
+    box-shadow: none;
+}
+
+.dday.closed.card{
+    background-color: $bgcolor-i !important;
+
+    .card-header{
+        h2{
+            span.weekday{
+                span:first-child{
+                    background-color: $bgcolor-ii !important;
+                }
+            }
+        }
+    }
+}
+
+.dday.card{
+    float: left;
+    width: calc(100% / 7);
+    box-shadow: 0 0 3px #fff;
+    transition: all 350ms ease;
+
+    &:hover .card-header:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: $ui-dday-card-hover;
+        z-index: 1;
+    }
+
+    .card-header{
+        padding: 40px 25px 29px !important;
+        text-align: center;
+
+        h2{
+            color: #FFFFFF;
+
+            small{
+                color: #FFFFFF;
+
+                &:first-child{
+
+                }
+                &:last-child{
+                    position: relative;
+                    left: -20px;
+                    width: calc(100% + (20px * 2));
+                }
+            }
+            span.weekday{
+                color: #FFFFFF;
+                font-size: 12px;
+                text-transform: uppercase;
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-weight: 900;
+
+                span{
+                    padding: 1px 5px;
+                    position: relative;
+                    top: 1px;
+                }
+                span:last-child{
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+
+    .card-body{
+        display: none;
+    }
+}
+
+@media (min-width: 461px) and (max-width: $screen-sm-max) {
+    .dday.card > .card-header h2 > span.transe-sm{
+        position: absolute;
+        left: 0;
+        right: 24%;
+        font-size: 12px;
+        text-align: right;
+        top: 30px;
+    }
+    .dday.card > .card-header h2 > b{
+        position: absolute;
+        left: 24%;
+        right: 0;
+        font-size: 17px;
+        text-align: left;
+        top: 30px;
+    }
+}
+@media (max-width: 460px) {
+    .dday.card > .card-header h2 > span.transe-sm{
+        position: absolute;
+        left: 0;
+        right: 15%;
+        font-size: 12px;
+        text-align: right;
+        top: 30px;
+    }
+    .dday.card > .card-header h2 > b{
+        position: absolute;
+        left: 6%;
+        right: 0;
+        font-size: 17px;
+        text-align: left;
+        top: 30px;
+    }
+    .dday.card .card-header h2 small:last-child{ left: -24px }
+}

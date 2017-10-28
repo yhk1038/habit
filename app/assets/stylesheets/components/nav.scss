@@ -1,0 +1,135 @@
+@import "drawable/*";
+
+/*
+ * Site navigation bar (header)
+ */
+
+#header .logo.mobile{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+}
+#header{
+    .logo > a{
+        padding: 0 15px !important;
+        font-size: 26px;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    .top-menu{
+        & > li{
+            & > a{
+                & > .tm-icon{
+                    font-size: 32px;
+                }
+            }
+
+            &#nav-alarm{
+                & > a > .tm-icon{
+                    font-size: 28px;
+                }
+            }
+
+            &#nav-new_habit{
+                & > a > .tm-icon{
+                    font-size: 32px;
+                }
+            }
+
+            &#nav-my_habits{
+                & > a > .tm-icon{
+                    font-size: 28px;
+                }
+            }
+
+            &#nav-my_account{
+                & > a{
+                    width: 50px;
+                    height: 36px;
+
+                    & > .tm-icon{
+                        font-size: 32px;
+                    }
+
+                    & > img{
+                        width: 32px;
+                        height: 32px;
+                        position: absolute;
+                        left: 8px;
+                        top: 2px;
+                        border-radius: 100%;
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*
+ * Site side bar
+ */
+
+#sidebar{
+    box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.15) !important;
+
+
+
+    .profile-menu{
+        .main-menu{
+            border-bottom: 1px solid $c-side-list-bg-hover;
+        }
+        & > a{
+            height: 200px;
+            background: none;
+
+            .profile-pic{
+                text-align: center;
+                padding-top: 30px;
+                padding-bottom: 18px;
+
+                & > img{
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 5px;
+                    border: none;
+                }
+            }
+        }
+    }
+
+    .main-menu{
+        & > li{
+            &.active{
+                & > a{
+                    background-color: rgba(0, 0, 0, 0.25);
+                }
+            }
+            & > a{
+                color: $c-side-list-text-default;
+                
+                &:hover{
+                    color: $c-side-list-text-hover;
+                    background-color: $c-side-list-bg-hover;
+                }
+            }
+        }
+    }
+    .sub-menu{
+        & > a:before,
+        & > a:after{ color: $c-side-list-text-default }
+
+        ul{
+            & > li > a{
+                color: $c-side-list-text-default;
+
+                &:hover{
+                    color: $c-side-list-text-hover;
+                    background-color: $c-side-list-bg-hover;
+                }
+            }
+        }
+    }
+}

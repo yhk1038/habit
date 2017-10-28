@@ -1,0 +1,135 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "components/drawable/*";
+
+.block-header .list-heading{
+    color: #000;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.flex-center-center {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.habit-width{
+    max-width: 285px;
+    min-width: 250px;
+}
+.habit-height{ height: 285px; }
+
+.fixed-height{ height: calc(3.8em + 5px) }
+
+.flex-center-justify {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+// Ground
+.ground.card{
+    background: transparent;
+    box-shadow: none;
+
+    & > .card-body{
+        width: 960px;
+    }
+
+    // Habit create pannel
+    .card.habit.creater{
+        background: rgba(0, 0, 0, 0.5);
+        transition: all 350ms ease;
+
+        &:hover{
+            background: rgba(0, 0, 0, 0.6);
+
+            .spin{
+                transform: rotate(180deg);
+            }
+        }
+
+        .card-header{
+            text-align: center;
+
+            h2 > span{
+                font-size: 75px;
+                color: #fff;
+                transition: all 350ms ease;
+            }
+        }
+
+    }
+
+    // Habit pannel
+    .card.habit:not(.creater){
+
+        .card-header{
+            small{
+                margin-top: 0;
+                color: #797979;
+            }
+            padding-bottom: 18px;
+        }
+
+        .card-body.content{
+            color: #000;
+            padding-top: 0;
+            padding-bottom: 18px;
+
+            p{
+                font-size: 14px;
+                margin-bottom: 7px;
+                margin-top: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &.passed{
+                    color: #404040;
+                }
+                &.actionBtn{
+
+                }
+            }
+        }
+
+        .card-body.footer{
+            color: #000;
+            font-weight: 300;
+            border-top: 1px solid #d3d3d3;
+            padding-top: 18px;
+            padding-bottom: 18px;
+            background-color: #f7f7f7;
+        }
+    }
+}
+
+@media (min-width: $screen-lg-min) { // > 1200
+    // lg ground size
+    .ground.card > .card-body{ width: 960px; }
+}
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) { // 992 <= screen < 1200
+    // md ground size
+    .ground.card > .card-body{ width: 960px; }
+}
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { // 768 <= screen < 992
+    // tablet ground size
+    .ground.card > .card-body{ width: 100%; }
+}
+@media (max-width: $screen-xs-max) { // < 768
+    // mobile ground size
+    .ground.card > .card-body{ width: 100%; }
+}

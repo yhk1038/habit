@@ -1,0 +1,21 @@
+<% case status %>
+<% when 'creater' %>
+<% when 'general' %>
+    <% @count -= 1 %>
+    <%= link_to 'javascript:;', id: "dday-#{dday.id}" do %>
+    <div class="dday <%= 'closed blocked' if dday.done %> card m-b-0 bgm-lightgreen" data-dday_id="<%= dday.id %>" data-habit_id="<%= @project.id %>">
+        <div class="card-header">
+            <h2>
+                <b><%= @all - @count %></b><span class="transe-sm">일차</span> <span class="weekday"><span class="bgm-green"><%= dday.day.strftime('%a') %></span><span class="hidden-sm hidden-xs"><%= dday.day.strftime('%d %b') %></span></span>
+                <small class="hidden-sm hidden-xs"><b><%= @count %>일</b> 남았어요!</small>
+                <small class="show-sm hidden-md hidden-lg">d-<b><%= @count %></b></small>
+            </h2>
+        </div>
+        <div class="card-body card-padding">
+            <!--<span><%#= link_to 'Show', project_dday_path(@project, dday) %></span>-->
+            <!--<span><%#= link_to 'Edit', edit_project_dday_path(@project, dday) %></span>-->
+            <!--<span><%#= link_to 'Destroy', project_dday_path(@project, dday), method: :delete, data: { confirm: 'Are you sure?' } %></span>-->
+        </div>
+    </div>
+    <% end %>
+<% end %>

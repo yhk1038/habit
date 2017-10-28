@@ -1,0 +1,63 @@
+<aside id="sidebar" class="sidebar c-overflow bgm-2">
+    <div class="profile-menu">
+        <a href="#">
+            <div class="profile-pic">
+                <img src="/template/img/profile-pics/1.jpg" alt="My Profile image" class="m-t-20">
+            </div>
+
+            <div class="profile-info">
+                <%= current_user.email %>
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </a>
+
+        <ul class="main-menu">
+            <li>
+                <%= link_to user_session_path do %>
+                    <i class="zmdi zmdi-account"></i> My Profile
+                <% end %>
+            </li>
+            <li>
+                <%= link_to edit_user_registration_path do %>
+                    <i class="zmdi zmdi-settings"></i> Account Settings
+                <% end %>
+            </li>
+            <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="zmdi zmdi-time-restore"></i> Logout
+                <% end %>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="main-menu">
+        <li class="active">
+            <%= link_to projects_path do %>
+                <i class="glyphicon glyphicon-leaf"></i> My Habits
+            <% end %>
+        </li>
+        <li>
+            <%= link_to '#' do %>
+                <i class="zmdi zmdi-view-compact"></i> Lounge
+            <% end %>
+        </li>
+        <li>
+            <%= link_to '#' do %>
+                <i class="zmdi zmdi-calendar"></i> Calendar
+            <% end %>
+        </li>
+        <li>
+            <%= link_to '#' do %>
+                <i class="zmdi zmdi-sort-amount-desc"></i> Stats
+            <% end %>
+        </li>
+        <!--<li class="sub-menu">-->
+            <!--<a href=""><i class="zmdi zmdi-widgets"></i> Widgets</a>-->
+
+            <!--<ul>-->
+                <!--<li><a href="widget-templates.html">Templates</a></li>-->
+                <!--<li><a href="widgets.html">Widgets</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+    </ul>
+</aside>
