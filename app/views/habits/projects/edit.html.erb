@@ -1,6 +1,34 @@
-<h1>Editing Project</h1>
 
-<%= render 'form', project: @project %>
+<div class="block-header m-t-30 m-b-0">
+    <h2 class="list-heading">'<%= @project.title %>'의 정보를 수정합니다</h2>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+    <ul class="actions">
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-search"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-refresh-alt"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="ground card">
+    <div class="card-body card-padding">
+        <div class="row">
+            <div class="card">
+                <div class="card-body card-padding">
+                    <%= link_to projects_path, id: 'prj-new-btn-go_back', class: 'btn btn-danger btn-icon waves-effect waves-circle waves-float p-absolute' do %>
+                        <i class="zmdi zmdi-arrow-back"></i>
+                    <% end %>
+
+                    <%= render 'form', project: @project %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

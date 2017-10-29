@@ -1,24 +1,48 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user %>
-</p>
+<div id="habit-show" class="card">
+    <div class="card-header">
+        <h2>
+            <%= @project.title %>
+            <small><%= @project.user.email %></small>
+        </h2>
+        <button class="btn bgm-red waves-effect">
+            <i class="zmdi zmdi-plus"></i>
+        </button>
+        <button class="btn btn-link">
+            <i class="zmdi zmdi-settings"></i>
+        </button>
+        <button class="btn bgm-gray waves-effect">
+            <i class="zmdi zmdi-plus"></i>
+        </button>
+    </div>
+    <div class="card-body card-padding">
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+    </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
 
-<p>
-  <strong>Success:</strong>
-  <%= @project.success %>
-</p>
+
+<!--<p id="notice"><%= notice %></p>-->
+
+<!--<p>-->
+  <!--<strong>User:</strong>-->
+  <!--<%= @project.user %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Title:</strong>-->
+  <!--<%= @project.title %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Description:</strong>-->
+  <!--<%= @project.description %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Success:</strong>-->
+  <!--<%= @project.success %>-->
+<!--</p>-->
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<!--<%= link_to 'Back', projects_path %>-->
