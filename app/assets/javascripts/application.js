@@ -13,3 +13,15 @@
 //= require rails-ujs
 // require turbolinks
 //= require_tree .
+
+
+this.sw_alert = function (it) {
+    swal({
+        title: "An input!",
+        text: "Write something interesting:",
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        inputPlaceholder: "Write something"
+    });
+};

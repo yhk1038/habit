@@ -1,34 +1,65 @@
 
-<div class="block-header m-t-30 m-b-0">
-    <h2 class="list-heading">'<%= @project.title %>'의 정보를 수정합니다</h2>
+<div id="habit-show" class="card">
+    <div class="card-header">
+        <a href="<%= projects_path %>" class="btn btn-link btn-sm btn-icon-text waves-effect m-b-10 p-0"><i class="tm-icon glyphicon glyphicon-leaf"></i> 목록으로 이동</a>
+        <h2>
+            <span><%= @project.title %></span>
+            <small><%= @project.user.email %></small>
+        </h2>
+        <button id="prj-show-btn_header-open" data-href="<%= project_ddays_path(@project) %>" class="btn btn-header bgm-4 waves-effect right-first">open</button>
+        <button id="prj-show-btn_header-back" data-href="<%= request.referer %>" class="btn btn-header btn-link circled waves-effect right-second"><i class="zmdi zmdi-close"></i></button>
+    </div>
 
-    <ul class="actions">
-        <li>
-            <a href="">
-                <i class="zmdi zmdi-search"></i>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <i class="zmdi zmdi-refresh-alt"></i>
-            </a>
-        </li>
-    </ul>
-</div>
-
-<div class="ground card">
     <div class="card-body card-padding">
-        <div class="row">
-            <div class="card">
-                <div class="card-body card-padding">
-                    <%= link_to projects_path, id: 'prj-new-btn-go_back', class: 'btn btn-danger btn-icon waves-effect waves-circle waves-float p-absolute' do %>
-                        <i class="zmdi zmdi-arrow-back"></i>
-                    <% end %>
-
+        <div class="ground card">
+            <div class="card-body card-padding">
+                <div class="row">
                     <%= render 'form', project: @project %>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="card z-depth-3">
+                        <div class="card-header bgm-deeporange">
+                            <h2>
+                                Danger zone
+                                <small>I'm afraid. I'm afraid, Dave. Dave, my mind is going. I can feel it. I can feel it. My mind is going</small>
+                            </h2>
+                        </div>
+                        <div class="card-body card-padding">
+                            <h4>Delete this project</h4>
+                            <p>Deleting a workspace can't be undone. Please make sure you're removing the correct one!</p>
+                            <%= link_to 'Destroy', '#modal-prj-destroy', data: {toggle: 'modal'}, class: 'btn bgm-deeporange btn-lg' %>
+                            <%#= link_to 'Destroy', project_path(@project), method: :delete, class: 'btn bgm-deeporange btn-lg' %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="modal-prj-destroy" data-modal-color="red" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 15px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">정말 삭제하실꺼에요?</h4>
+            </div>
+            <div class="modal-body">
+                <p>프로젝트를 보다 안전하게 삭제하기 위해 본 프로젝트의 이름 '<b><%= @project.title %></b>' 을 아래 입력창에 입력해주세요.</p>
+                <input type="text" placeholder="프로젝트의 이름을 입력해주세요" required>
+            </div>
+            <p class="invalid_msg">입력이 올바르지 않습니다.</p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">취소</button>
+                <button id="prj-delete-confirm" type="button" data-href="<%= project_path(@project) %>" class="btn btn-link waves-effect">삭제</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    var htm = document.querySelector('html');
+    htm.classList += 'fill-height';
+</script>

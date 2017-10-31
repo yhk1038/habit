@@ -29,12 +29,39 @@ class Project < ApplicationRecord
 
         progress_rate = ((done/total).round(3)*100).to_s + '%'
 
-        progress_data = {
+        stride = 1
+
+        {
+            # calculated
             rate: progress_rate,
             total: total.to_i,
             done: done.to_i,
-            left: (total - done).to_i
+            left: (total - done).to_i,
+
+            # info
+            start: ddays_all.first.day.strftime('%F (%a)'),
+            finish: ddays_all.last.day.strftime('%F (%a)'),
+            stride: stride
         }
-        progress_data
+    end
+
+    def pendding
+        status = ''
+        message = ''
+        case self.success
+        when true
+            status += '완료되었습니다.'
+            message += '축하드립니다! 습관만들기에 성공하셨군요:)'
+
+        when false
+            status += '진행중입니다.'
+            message += '멋진 습관을 얻기까지 <b>'+self.progress[:left].to_s+'일</b> 남았습니다:)'
+
+        end
+
+        {
+            status: status,
+            message: message
+        }
     end
 end

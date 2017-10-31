@@ -12,34 +12,53 @@
     <% end %>
     <%= form.hidden_field :user_id, id: :project_user_id, value: current_user.id %>
 
-    <div id="prj-form-title" class="input-group fg-float row w-100 m-t-20">
-        <div class="col-sm-2">
-            <p class="c-black f-500 m-b-20 text-right">프로젝트 이름</p>
-        </div>
-        <div class="col-sm-10">
-            <div class="fg-line">
-                <%= form.text_field :title, id: :project_title, class: 'form-control' %>
-                <%= form.label :title, class: 'fg-label', value: '만들고 싶은 습관의 이름을 적어주세요@' %>
-            </div>
-        </div>
+    <div id="prj-form-title" class="form-group fg-line row w-100 m-t-30 m-l-0">
+        <%= form.label :title, class: 'f-16 f-500 m-b-10', value: '프로젝트 이름' %>
+        <%= form.text_field :title, id: :project_title, class: 'form-control', placeholder: '만들고 싶은 습관의 이름을 적어주세요@' %>
     </div>
 
-    <div id="prj-form-description" class="form-group row w-100 m-t-20">
-        <div class="col-sm-2">
-            <p class="c-black f-500 m-b-20 text-right">프로젝트 설명</p>
-        </div>
-        <div class="col-sm-10">
-            <div class="fg-line">
-                <%= form.text_area :description, id: :project_description, class: 'form-control', rows: '5', placeholder: '스스로 동기를 부여할 수 있도록 만들고 싶은 습관에 대한 설명을 적어주세요@' %>
-            </div>
-        </div>
+    <div id="prj-form-description" class="form-group row w-100 m-t-30 m-l-0">
+        <%= form.label :description, class: 'f-16 f-500 m-b-10', value: '프로젝트 설명' %>
+        <%= form.text_area :description, id: :project_description, class: 'form-control', rows: '5', placeholder: '스스로 동기를 부여할 수 있도록 만들고 싶은 습관에 대한 설명을 적어주세요@' %>
     </div>
 
-    <div id="prj-form-submit" class="form-group row w-100">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary btn-icon-text waves-effect">
+    <div id="prj-form-is_public" class="form-group row w-100 m-t-30 m-l-0">
+        <%= form.label :is_public, class: 'f-16 f-500', value: 'Project Visibility' %>
+        <p>Visible & Sharable your awesome effort</p>
+
+        <div class="col-sm-6 radio-group">
+            <label class="radio radio-inline m-r-20">
+                <%= form.radio_button :is_public, 'true' %>
+                <i class="input-helper"></i>
+                <i class="zmdi zmdi-lock"></i>
+                <div class="pull-left">
+                    <strong>Private</strong>
+                    <br/>
+                    <small class="lighten">This is a workspace for your eyes only</small>
+                </div>
+            </label>
+        </div>
+        <div class="col-sm-6 radio-group">
+            <label class="radio radio-inline m-r-20">
+                <%= form.radio_button :is_public, 'false' %>
+                <i class="input-helper"></i>
+                <i class="zmdi zmdi-accounts"></i>
+                <div class="pull-left">
+                    <strong>Public</strong>
+                    <br/>
+                    <small class="lighten">This will create a workspace for everybody to see</small>
+                </div>
+            </label>
+        </div>
+
+
+    </div>
+
+    <div id="prj-form-submit" class="form-group row w-100 m-l-0 p-0">
+        <div class="col-sm-offset-2 col-sm-10 text-right">
+            <button type="submit" class="btn bgm-green btn-icon-text waves-effect">
                 <i class="zmdi zmdi-check-all"></i>
-                작성 완료
+                save
             </button>
         </div>
     </div>
