@@ -1,9 +1,10 @@
-<h1>Site#randing</h1>
-<p>Find me in app/views/site/randing.html.erb</p>
+<h1>Site#Landing</h1>
+<p>Find me in app/views/site/landing.html.erb</p>
 
 <% unless user_signed_in? %>
     <%= link_to 'Login for Facebook', user_facebook_omniauth_authorize_path, class: 'btn bgm-blue btn-lg' %>
     <%= link_to 'Login for Google', user_google_oauth2_omniauth_authorize_path, class: 'btn bgm-pink btn-lg' %>
+    <%= link_to 'Login for Kakao', user_kakao_omniauth_authorize_path, class: 'btn bgm-orange btn-lg' %>
 <% else %>
     <%= current_user.email %>, <%= current_user.id %>
 <% end %>

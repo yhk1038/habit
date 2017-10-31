@@ -8,6 +8,11 @@ class User < ApplicationRecord
     has_many :identities, dependent: :destroy
     has_many :projects, -> { order(created_at: :desc).includes(:ddays) }
 
+    def delete_clearly
+        self.identities.destroy_all
+        self.projects.destroy_all
+        self.destroy!
+    end
 
     # Omniauth Settings
     # following => https://hcn1519.github.io/articles/2016-12/omniauth_devise_configuration
@@ -33,7 +38,8 @@ class User < ApplicationRecord
                 if user.nil?
                     # 카카오는 email을 제공하지 않음
 
-                    if auth.provider == "kakao"
+                    email = auth.info.email ? auth.info.email : nil
+                    if email.nil? # auth.provider == "kakao"
                         # provider(회사)별로 데이터를 제공해주는 hash의 이름이 다릅니다.
 
                         # 각각의 omnaiuth별로 auth hash가 어떤 경로로, 어떤 이름으로 제공되는지 확인하고 설정해주세요.
@@ -66,17 +72,22 @@ class User < ApplicationRecord
             user.update(profile_img: identity.profile_img)  if user.profile_img.nil?
         end
 
+        sth_wrong = nil
         if identity.user.nil? || identity.user.id != user.id
-            identity.user = user
-            identity.save!
+            sth_wrong = identity.provider.split('_')[0].capitalize+' 계정은 이미 가입된 사용자가 존재합니다.' if identity.user
+
+            if sth_wrong.nil?
+                identity.user = user
+                identity.save!
+            end
         end
-        user
+        [user, sth_wrong]
 
     end
 
     def self.find_user_through_identity_with auth
-        user = User.where(:email => auth.info.email).take
-        user ||= Identity.where(uid: auth.uid, provider: auth.provider).take.user
+        user = User.where(email: auth.info.email).take
+        user ||= Identity.where(uid: auth.uid, provider: auth.provider).take&.user
         user
     end
 

@@ -10,14 +10,13 @@ class Identity < ApplicationRecord
         )
 
         # out of the guides
-
+        email = auth.info.email ? auth.info.email : nil
         identity.update(
             name: "#{auth.info.name}",
-            nickname: "#{auth.provider == 'kakao' ? auth.info.name.gsub(' ','_') : auth.info.email.split('@').first}",
-            email: "#{auth.info.email unless auth.provider == 'kakao'}",
+            nickname: "#{email.nil? ? auth.info.name.gsub(' ','_') : auth.info.email.split('@').first}",
+            email: "#{auth.info.email if email}",
             profile_img: "#{auth.info.image}"
         )
-
         identity
     end
 end

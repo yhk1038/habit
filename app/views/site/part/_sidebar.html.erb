@@ -2,11 +2,11 @@
     <div class="profile-menu">
         <a href="#">
             <div class="profile-pic">
-                <img src="/template/img/profile-pics/1.jpg" alt="My Profile image" class="m-t-20">
+                <img src="<%= current_user.profile_img %>" alt="My Profile image" class="m-t-20">
             </div>
 
             <div class="profile-info">
-                <%= current_user.email %>
+                Nickname: <%= current_user.nickname %>
                 <i class="zmdi zmdi-caret-down"></i>
             </div>
         </a>

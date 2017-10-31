@@ -11,8 +11,8 @@ Rails.application.routes.draw do
         namespace :users do
             get "/:id", to: 'sessions#show', as: 'profile'
         end
+        match "/auth/kakao/callback(.:format)", to: 'users/omniauth_callbacks#kakao', via: [:get, :post]
     end
-    #get 'users/:id', to: 'users/sessions#show', as: 'user_profile'
 
     # Resources
     scope module: 'habits' do
