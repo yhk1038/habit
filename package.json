@@ -1,5 +1,7 @@
 {
   "name": "habit",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "promise": "^8.0.1"
+  }
 }
