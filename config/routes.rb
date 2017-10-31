@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     devise_for :users, controllers: {
         sessions: 'users/sessions'
     }
+    devise_scope :user do
+        namespace :users do
+            get "/:id", to: 'sessions#show', as: 'profile'
+        end
+    end
+    #get 'users/:id', to: 'users/sessions#show', as: 'user_profile'
 
     # Resources
     scope module: 'habits' do
