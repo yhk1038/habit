@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026154257) do
+ActiveRecord::Schema.define(version: 20171031151352) do
 
   create_table "ddays", force: :cascade do |t|
     t.integer "project_id"
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(version: 20171026154257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_ddays_on_project_id"
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.string "email"
+    t.string "profile_img"
+    t.string "name"
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -44,6 +57,13 @@ ActiveRecord::Schema.define(version: 20171026154257) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_img"
+    t.string "name"
+    t.string "nickname"
+    t.string "bio"
+    t.string "url"
+    t.string "location"
+    t.integer "login_count"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

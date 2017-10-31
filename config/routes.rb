@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
     # User sessions
     devise_for :users, controllers: {
-        sessions: 'users/sessions'
+        sessions: 'users/sessions',
+        omniauth_callbacks: 'users/omniauth_callbacks'
     }
     devise_scope :user do
         namespace :users do
