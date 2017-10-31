@@ -2,3 +2,25 @@
 <p>
     My session id is <%= @user.email %>
 </p>
+
+<% %w(facebook google_oauth2).each do |provider| %>
+    <% case provider %>
+    <% when 'facebook' %>
+        <% identity = current_user.identities.where(provider: provider).take %>
+        <% if identity %>
+            <%= link_to 'Facebook connected: '+identity.email, user_facebook_omniauth_authorize_path, class: 'btn bgm-blue btn-lg disabled' %>
+        <% else %>
+            <%= link_to 'Login for Facebook', user_facebook_omniauth_authorize_path, class: 'btn bgm-blue btn-lg' %>
+        <% end %>
+
+    <% when 'google_oauth2' %>
+        <% identity = current_user.identities.where(provider: provider).take %>
+        <% if identity %>
+            <%= link_to 'Google connected: '+identity.email, user_google_oauth2_omniauth_authorize_path, class: 'btn bgm-pink btn-lg disabled' %>
+        <% else %>
+            <%= link_to 'Login for Google', user_google_oauth2_omniauth_authorize_path, class: 'btn bgm-pink btn-lg' %>
+        <% end %>
+
+    <% end %>
+    <br/>
+<% end %>

@@ -3,6 +3,7 @@
 
 <% unless user_signed_in? %>
     <%= link_to 'Login for Facebook', user_facebook_omniauth_authorize_path, class: 'btn bgm-blue btn-lg' %>
+    <%= link_to 'Login for Google', user_google_oauth2_omniauth_authorize_path, class: 'btn bgm-pink btn-lg' %>
 <% else %>
     <%= current_user.email %>, <%= current_user.id %>
 <% end %>
