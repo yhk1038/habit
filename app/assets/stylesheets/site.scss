@@ -8,3 +8,28 @@
 .bgm-2{ background: $bgcolor-2 !important }
 .bgm-3{ background: $bgcolor-3 !important }
 .bgm-4{ background: $bgcolor-4 !important }
+
+
+html.fill-height{
+    height: 100%;
+    body
+    {
+        height: 100% !important;
+    }
+
+    section#main,
+    section#content,
+    section#content > div.container,
+    section#content > div.container > .card
+    {
+        min-height: 100% !important;
+    }
+    section#main{
+        padding-bottom: 0;
+    }
+
+    #footer{
+        bottom: initial;
+        background: $bgcolor-footer;
+    }
+}

@@ -59,7 +59,7 @@ class Habits::ProjectsController < ApplicationController
         @project.destroy
         respond_to do |format|
             format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-            format.json { head :no_content }
+            format.json { return render json: {status: :ok, path: projects_url} }
         end
     end
 

@@ -1,0 +1,40 @@
+@import "drawable/*";
+
+#modal-prj-destroy.modal{
+    .modal-dialog{
+        margin: 16em auto;
+    }
+
+    .modal-body{
+        background: #fff;
+        color: #333;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        p{
+            font-size: 14px;
+        }
+        input[type='text']{
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            font-size: 14px;
+            padding: 6px 12px;
+            transition: all 350ms ease;
+
+            &:focus{
+                border: 1px solid #707070;
+            }
+        }
+    }
+    p.invalid_msg{
+        margin: 10px !important;
+        text-align: center;
+        display: none;
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    #modal-prj-destroy.modal > .modal-dialog{ margin: 5em auto; }
+}
+

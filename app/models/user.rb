@@ -4,5 +4,5 @@ class User < ApplicationRecord
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :projects, -> { includes :ddays }
+    has_many :projects, -> { order(created_at: :desc).includes(:ddays) }
 end

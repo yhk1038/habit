@@ -1,6 +1,6 @@
 
 <div class="block-header m-t-30 m-b-0">
-    <h2 class="list-heading">어떤 습관을 만들고 싶으신가요?</h2>
+    <h2 class="list-heading">어떤 습관을 만드시겠어요?</h2>
 
     <ul class="actions">
         <li>
@@ -14,18 +14,18 @@
             </a>
         </li>
     </ul>
-
 </div>
-
 
 <div class="ground card">
     <div class="card-body card-padding">
         <div class="row">
             <div class="card">
                 <div class="card-body card-padding">
-                    <%= render 'form', project: @project %>
+                    <%= link_to projects_path, id: 'prj-new-btn-go_back', class: 'btn btn-danger btn-icon waves-effect waves-circle waves-float p-absolute' do %>
+                        <i class="zmdi zmdi-arrow-back"></i>
+                    <% end %>
 
-                    <%= link_to 'Back', projects_path %>
+                    <%= render 'form', project: @project %>
                 </div>
             </div>
         </div>

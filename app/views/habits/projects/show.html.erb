@@ -1,24 +1,122 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user %>
-</p>
+<div id="habit-show" class="card">
+    <div class="card-header">
+        <a href="<%= projects_path %>" class="btn btn-link btn-sm btn-icon-text waves-effect m-b-10 p-0"><i class="tm-icon glyphicon glyphicon-leaf"></i> 목록으로 이동</a>
+        <h2>
+            <%= @project.title %>
+            <small><%= @project.user.email %></small>
+        </h2>
+        <button id="prj-show-btn_header-open" data-href="<%= project_ddays_path(@project) %>" class="btn btn-header bgm-4 waves-effect right-first">open</button>
+        <button id="prj-show-btn_header-danger" data-href="<%= edit_project_path(@project) %>" class="btn btn-header btn-link circled waves-effect right-second"><i class="zmdi zmdi-settings"></i></button>
+    </div>
+    <div class="card-body card-padding">
+        <% pendding = @project.pendding %>
+        <% progress = @project.progress %>
+        <div class="ground card">
+            <div class="card-body card-padding">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="prj-info card">
+                            <div class="card-header">
+                                <h2>
+                                    Habit project info
+                                    <small>
+                                        <b><%= pendding[:status] %></b>
+                                        <%== pendding[:message] %>
+                                    </small>
+                                </h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <pre><%= @project.description %></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="prj-info card">
+                            <div class="card-header">
+                                <h2>Settings <small>&nbsp;</small></h2>
+                            </div>
+                            <div class="card-body card-padding">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <th>시작일</th>
+                                        <td><%= progress[:start] %></td>
+                                    </tr>
+                                    <tr>
+                                        <th>종료일(예정)</th>
+                                        <td><%= progress[:finish] %></td>
+                                    </tr>
+                                    <tr>
+                                        <th>반복 주기</th>
+                                        <td><%= progress[:stride] %> 일 마다</td>
+                                    </tr>
+                                    <tr>
+                                        <th>목표 횟수</th>
+                                        <td><%= progress[:total] %> 회</td>
+                                    </tr>
+                                    <tr>
+                                        <th>완료/남음</th>
+                                        <td><%= progress[:done] %> 회 / <%= progress[:left] %> 회 남음 (진행율: <%= progress[:rate] %>)</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+                <div class="row">
+                    <div class="col-sm-12" style="min-height: 260px;">
+                        <div role="tabpanel">
+                            <ul class="tab-nav" role="tablist">
+                                <li class="active"><a href="#forked" aria-controls="forked" role="tab" data-toggle="tab" aria-expanded="false">original host</a></li>
+                                <li class=""><a href="#members11" aria-controls="members11" role="tab" data-toggle="tab" aria-expanded="false">linked Members</a></li>
+                            </ul>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="forked">
+                                    <div class="media-demo">
+                                        <div class="media col-sm-4">
+                                            <div class="pull-left">
+                                                <a href="#">
+                                                    <img class="media-object" src="/template/img/profile-pics/1.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><%= @project.user.email %></h4>
+                                                <%= @project.user.email %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="members11">
+                                    <div class="media-demo">
+                                        <% 5.times do |i| %>
+                                        <div class="media col-sm-4">
+                                            <div class="pull-left">
+                                                <a href="#">
+                                                    <img class="media-object" src="/template/img/profile-pics/1.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><%= @project.user.email %></h4>
+                                                <%= @project.user.email %>
+                                            </div>
+                                        </div>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-  <strong>Success:</strong>
-  <%= @project.success %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<script type="text/javascript" charset="utf-8">
+var htm = document.querySelector('html');
+htm.classList += 'fill-height';
+</script>
