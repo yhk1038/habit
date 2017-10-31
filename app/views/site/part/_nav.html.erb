@@ -130,7 +130,7 @@
                 <% if user_signed_in? %>
                     <li id="nav-my_account" class="dropdown">
                         <a data-toggle="dropdown" href="">
-                            <img src="/template/img/profile-pics/1.jpg" alt="My Profile image">
+                            <img src="<%= current_user.profile_img %>" alt="My Profile image">
                         </a>
                         <ul class="dropdown-menu dm-icon pull-right">
                             <!--<li class="skin-switch hidden-xs">-->
